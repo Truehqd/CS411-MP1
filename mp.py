@@ -34,6 +34,7 @@ def _loadTableSize(tableFile):
 def onePassOperator(configFile, table1File, table2File, outputFile):
     outputFileCursor = open(outputFile, 'w')
     csvWriter = csv.writer(outputFileCursor)
+    memorySize, blockSize = _loadConfig(configFile)
     # TODO: step 1 - load config.txt as json, extract memory size (Number of blocks in the main memory) 
     # and block size(Number of Tuples in a block), compute maximal number of rows(tuples) that 
     # can be loaded into memory.
@@ -52,6 +53,7 @@ def onePassOperator(configFile, table1File, table2File, outputFile):
     colNames2 = _loadColNames(table2File)
     #TODO: step 2.2 - check if the column names of input table 1 and input table 2 are valid
     failingConditions = True
+    if colNames1 != colNames2
     if failingConditions:
         outputFileCursor.write("INVALID SCHEMA/INPUT\n")
         outputFileCursor.close()
